@@ -16,6 +16,8 @@ app.use(session({
 安装:`npm install connect-redis --save` <br/>
 更改session配置
 ```
+const session = require("express-session");
+const RedisStore = require('connect-redis')(session);
 app.use(session({
     store: new RedisStore(),
     secret: 'ucenter',
