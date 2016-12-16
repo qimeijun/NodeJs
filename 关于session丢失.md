@@ -18,11 +18,16 @@ app.use(session({
 ```
 const session = require("express-session");
 const RedisStore = require('connect-redis')(session);
+let options = {
+    "host": "127.0.0.1",
+    "port": "6379",
+    "ttl": 60 * 30
+}
 app.use(session({
-    store: new RedisStore(),
+    store: new RedisStore(options),
     secret: 'ucenter',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false , maxAge: 1000 * 60 * 30}
 }));
 ```
